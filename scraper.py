@@ -91,12 +91,13 @@ for token in tokens:
         clips.append(os.path.join('pjm_clips', clip_file))
     else:
         scrape(token)
+        # utworzenie nowego pliku, format mp4 nie zawiera polskich znaków
         filename_base = unidecode(token)
         filename = f'{filename_base}.mp4'
         mapping[token] = filename
         clips.append(os.path.join('pjm_clips', filename))
         updated = True
-#odtwarzanie klipów wiedo w kolejności
+#odtwarzanie klipów wideo w kolejności
 for clip_path in clips:
     cap = cv2.VideoCapture(clip_path)
     if not cap.isOpened():
